@@ -5,45 +5,72 @@
   <title>鈴木石鹸株式会社</title>
   <style>
     body {
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
       margin: 0;
-      padding: 0;
-      line-height: 1.7;
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
     }
+
     header {
       background: #3bb6b0;
       color: white;
-      padding: 24px;
-      text-align: center;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
+
+    .menu-btn {
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    nav {
+      display: none;
+      background: #e8f7f6;
+      padding: 16px;
+    }
+
+    nav a {
+      display: block;
+      margin: 8px 0;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
     section {
       padding: 20px;
-    }
-    h2 {
-      color: #3bb6b0;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>鈴木石鹸株式会社</h1>
-  <p>毎日を清潔に。やさしさにこだわる石鹸メーカー</p>
+  <h1>鈴木石鹸</h1>
+  <div class="menu-btn" onclick="toggleMenu()">≡</div>
 </header>
 
-<section>
-  <h2>鈴木石鹸の魅力</h2>
-  <ul>
-    <li>しっかり汚れを落とす洗浄力</li>
-    <li>肌にやさしい処方</li>
-    <li>毎日使いたくなる香り</li>
-  </ul>
-</section>
+<nav id="menu">
+  <a href="#">ホーム</a>
+  <a href="#">会社概要</a>
+  <a href="#">製品紹介</a>
+  <a href="#">お問い合わせ</a>
+</nav>
 
 <section>
-  <h2>会社概要</h2>
-  <p>鈴木石鹸株式会社は、人々の暮らしを清潔で快適にする石鹸づくりを行っています。</p>
+  <h2>ようこそ</h2>
+  <p>毎日を清潔に。やさしさにこだわる石鹸メーカーです。</p>
 </section>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("menu");
+    if (menu.style.display === "block") {
+      menu.style.display = "none";
+    } else {
+      menu.style.display = "block";
+    }
+  }
+</script>
 
 </body>
 </html>
