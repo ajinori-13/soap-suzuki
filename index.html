@@ -2,15 +2,26 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>鈴木石鹸株式会社</title>
+
   <style>
+    :root {
+      --main-color: #5fb7b0;
+      --sub-color: #e8f6f5;
+      --text-color: #333;
+    }
+
     body {
       margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
+      color: var(--text-color);
+      line-height: 1.8;
+      background: white;
     }
 
     header {
-      background: #3bb6b0;
+      background: var(--main-color);
       color: white;
       padding: 16px;
       display: flex;
@@ -18,34 +29,80 @@
       align-items: center;
     }
 
+    header h1 {
+      font-size: 20px;
+      margin: 0;
+    }
+
     .menu-btn {
-      font-size: 28px;
+      font-size: 26px;
       cursor: pointer;
     }
 
     nav {
       display: none;
-      background: #e8f7f6;
+      background: var(--sub-color);
       padding: 16px;
     }
 
     nav a {
       display: block;
-      margin: 8px 0;
-      color: #333;
+      padding: 10px 0;
       text-decoration: none;
+      color: var(--text-color);
       font-weight: bold;
     }
 
+    .hero {
+      background: var(--sub-color);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .hero h2 {
+      font-size: 22px;
+      margin-bottom: 12px;
+    }
+
     section {
-      padding: 20px;
+      padding: 32px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h3 {
+      color: var(--main-color);
+      margin-bottom: 10px;
+    }
+
+    ul {
+      padding-left: 18px;
+    }
+
+    footer {
+      background: #f2f2f2;
+      text-align: center;
+      padding: 16px;
+      font-size: 14px;
+    }
+
+    /* PC表示用 */
+    @media (min-width: 768px) {
+      header h1 {
+        font-size: 24px;
+      }
+
+      .hero h2 {
+        font-size: 28px;
+      }
     }
   </style>
 </head>
+
 <body>
 
 <header>
-  <h1>鈴木石鹸</h1>
+  <h1>鈴木石鹸株式会社</h1>
   <div class="menu-btn" onclick="toggleMenu()">≡</div>
 </header>
 
@@ -56,19 +113,40 @@
   <a href="#">お問い合わせ</a>
 </nav>
 
+<div class="hero">
+  <h2>毎日を、清潔で心地よく。</h2>
+  <p>
+    鈴木石鹸株式会社は、<br>
+    人々の暮らしに寄り添う石鹸づくりを行っています。
+  </p>
+</div>
+
 <section>
-  <h2>ようこそ</h2>
-  <p>毎日を清潔に。やさしさにこだわる石鹸メーカーです。</p>
+  <h3>鈴木石鹸のこだわり</h3>
+  <ul>
+    <li>毎日安心して使える、やさしい使い心地</li>
+    <li>しっかり汚れを落とす洗浄力</li>
+    <li>使うたびに心地よい香り</li>
+  </ul>
 </section>
+
+<section>
+  <h3>会社について</h3>
+  <p>
+    鈴木石鹸株式会社は、<br>
+    「清潔で快適な毎日を届けたい」という想いのもと、<br>
+    丁寧な石鹸づくりを続けている架空の石鹸メーカーです。
+  </p>
+</section>
+
+<footer>
+  © 鈴木石鹸株式会社
+</footer>
 
 <script>
   function toggleMenu() {
     const menu = document.getElementById("menu");
-    if (menu.style.display === "block") {
-      menu.style.display = "none";
-    } else {
-      menu.style.display = "block";
-    }
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
   }
 </script>
 
