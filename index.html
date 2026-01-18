@@ -7,93 +7,148 @@
 
   <style>
     :root {
-      --main-color: #5fb7b0;
-      --sub-color: #e8f6f5;
-      --text-color: #333;
+      --main: #4fb6b0;
+      --light: #e9f7f6;
+      --dark: #0f5c59;
+      --text: #333;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", sans-serif;
-      color: var(--text-color);
+      color: var(--text);
       line-height: 1.8;
       background: white;
     }
 
+    /* ===== HEADER ===== */
     header {
-      background: var(--main-color);
-      color: white;
-      padding: 16px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255,255,255,0.95);
       display: flex;
       justify-content: space-between;
       align-items: center;
+      padding: 14px 20px;
+      z-index: 1000;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
 
     header h1 {
-      font-size: 20px;
+      font-size: 18px;
       margin: 0;
+      color: var(--dark);
     }
 
     .menu-btn {
-      font-size: 26px;
+      font-size: 28px;
       cursor: pointer;
     }
 
+    /* ===== MENU ===== */
     nav {
-      display: none;
-      background: var(--sub-color);
-      padding: 16px;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100%;
+      background: var(--main);
+      padding: 80px 24px;
+      transition: 0.3s;
+      z-index: 999;
+    }
+
+    nav.active {
+      right: 0;
     }
 
     nav a {
       display: block;
-      padding: 10px 0;
+      color: white;
       text-decoration: none;
-      color: var(--text-color);
+      font-size: 18px;
+      margin-bottom: 20px;
       font-weight: bold;
     }
 
+    /* ===== HERO ===== */
     .hero {
-      background: var(--sub-color);
-      padding: 40px 20px;
+      background: linear-gradient(135deg, var(--main), var(--dark));
+      color: white;
+      padding: 120px 20px 80px;
       text-align: center;
     }
 
     .hero h2 {
-      font-size: 22px;
-      margin-bottom: 12px;
+      font-size: 28px;
+      margin-bottom: 16px;
     }
 
+    .hero p {
+      max-width: 600px;
+      margin: auto;
+      opacity: 0.95;
+    }
+
+    /* ===== SECTION ===== */
     section {
-      padding: 32px 20px;
-      max-width: 900px;
+      padding: 60px 20px;
+      max-width: 1100px;
       margin: auto;
     }
 
-    h3 {
-      color: var(--main-color);
-      margin-bottom: 10px;
-    }
-
-    ul {
-      padding-left: 18px;
-    }
-
-    footer {
-      background: #f2f2f2;
+    section h3 {
       text-align: center;
-      padding: 16px;
+      color: var(--dark);
+      margin-bottom: 40px;
+      font-size: 22px;
+    }
+
+    /* ===== CARDS ===== */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--light);
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h4 {
+      margin-top: 0;
+      color: var(--dark);
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: #f3f3f3;
+      padding: 20px;
+      text-align: center;
       font-size: 14px;
     }
 
-    /* PC表示用 */
+    /* ===== PC ===== */
     @media (min-width: 768px) {
       header h1 {
-        font-size: 24px;
+        font-size: 22px;
       }
 
       .hero h2 {
-        font-size: 28px;
+        font-size: 40px;
       }
     }
   </style>
@@ -107,35 +162,63 @@
 </header>
 
 <nav id="menu">
-  <a href="#">ホーム</a>
-  <a href="#">会社概要</a>
-  <a href="#">製品紹介</a>
-  <a href="#">お問い合わせ</a>
+  <a href="#home" onclick="toggleMenu()">ホーム</a>
+  <a href="#features" onclick="toggleMenu()">こだわり</a>
+  <a href="#products" onclick="toggleMenu()">製品</a>
+  <a href="#about" onclick="toggleMenu()">会社概要</a>
 </nav>
 
-<div class="hero">
-  <h2>毎日を、清潔で心地よく。</h2>
+<div class="hero" id="home">
+  <h2>清潔な毎日を、<br>未来へつなぐ。</h2>
   <p>
-    鈴木石鹸株式会社は、<br>
-    人々の暮らしに寄り添う石鹸づくりを行っています。
+    鈴木石鹸株式会社は、  
+    人々の暮らしに寄り添う石鹸づくりを続ける  
+    架空の石鹸メーカーです。
   </p>
 </div>
 
-<section>
+<section id="features">
   <h3>鈴木石鹸のこだわり</h3>
-  <ul>
-    <li>毎日安心して使える、やさしい使い心地</li>
-    <li>しっかり汚れを落とす洗浄力</li>
-    <li>使うたびに心地よい香り</li>
-  </ul>
+  <div class="cards">
+    <div class="card">
+      <h4>やさしさ設計</h4>
+      <p>毎日安心して使える、肌へのやさしさを大切にしています。</p>
+    </div>
+    <div class="card">
+      <h4>確かな洗浄力</h4>
+      <p>汚れをしっかり落としながら、必要なうるおいを守ります。</p>
+    </div>
+    <div class="card">
+      <h4>心地よい香り</h4>
+      <p>使うたびに気分が整う、やさしい香りにこだわっています。</p>
+    </div>
+  </div>
 </section>
 
-<section>
-  <h3>会社について</h3>
-  <p>
-    鈴木石鹸株式会社は、<br>
-    「清潔で快適な毎日を届けたい」という想いのもと、<br>
-    丁寧な石鹸づくりを続けている架空の石鹸メーカーです。
+<section id="products">
+  <h3>製品ラインナップ</h3>
+  <div class="cards">
+    <div class="card">
+      <h4>スタンダード石鹸</h4>
+      <p>毎日の手洗いに最適な、基本の一品。</p>
+    </div>
+    <div class="card">
+      <h4>敏感肌用ソープ</h4>
+      <p>刺激を抑えた、やさしい使い心地。</p>
+    </div>
+    <div class="card">
+      <h4>アロマ石鹸</h4>
+      <p>香りを楽しむ、リラックスタイム向け。</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h3>会社概要</h3>
+  <p style="text-align:center; max-width:700px; margin:auto;">
+    鈴木石鹸株式会社は、  
+    「清潔で快適な暮らしを支えたい」という想いのもと、  
+    丁寧なものづくりを続けている架空の石鹸メーカーです。
   </p>
 </section>
 
@@ -145,8 +228,7 @@
 
 <script>
   function toggleMenu() {
-    const menu = document.getElementById("menu");
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
+    document.getElementById("menu").classList.toggle("active");
   }
 </script>
 
